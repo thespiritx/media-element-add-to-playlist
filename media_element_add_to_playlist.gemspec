@@ -7,11 +7,11 @@ require "media_element_add_to_playlist/version"
 Gem::Specification.new do |s|
   s.name        = "media_element_add_to_playlist"
   s.version     = MediaElementAddToPlaylist::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of MediaElementAddToPlaylist."
-  s.description = "TODO: Description of MediaElementAddToPlaylist."
+  s.authors     = ["Leah Lee"]
+  s.email       = ["lmb@iu.edu"]
+  s.homepage    = "https://github.com/avalonmediasystem/media-element-add-to-playlist"
+  s.summary     = "Add the current time or segment to a playlist."
+  s.description = "Add the current time or segment to a playlist."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.0.13"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'guard-coffeescript'
 end
