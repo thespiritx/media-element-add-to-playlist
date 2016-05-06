@@ -15,6 +15,7 @@
 
       button.click (event) ->
         $offset = player.getCurrentTime()
-        alert "hi"
+        alert $offset
+        $('#add_to_playlist').show()
 
 )(mejs.$)

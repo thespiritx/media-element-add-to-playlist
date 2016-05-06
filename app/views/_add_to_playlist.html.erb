@@ -1,0 +1,33 @@
+<%#
+Copyright 2011-2016, The Trustees of Indiana University and Northwestern
+  University.  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed 
+  under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+  CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+  specific language governing permissions and limitations under the License.
+---  END LICENSE_HEADER BLOCK  ---
+%>
+<div class="panel-group" id="add_to_playlist" >
+  <h4>Add to playlist...</h4>
+  <%= form_tag do %>
+    <%= label_tag(:playlist_item_name, "Name") %>
+    <%= text_field_tag(:playlist_item_name) %>
+    <%= label_tag(:selected_playlist, "Playlist") %>
+    <%= collection_select(:post, :playlist_id, Playlist.where(user: current_user), :id, :title) %>
+    </br>
+    <%= label_tag(:playlist_item_start, "Start") %>
+    <%= text_field_tag(:playlist_item_start) %>
+    <%= label_tag(:playlist_item_end, "End") %>
+    <%= text_field_tag(:playlist_item_end) %>
+    </br>
+    <%= label_tag(:playlist_item_description, "Description") %>
+    <%= text_field_tag(:playlist_item_description) %>
+    <%= submit_tag("Add") %>
+  <% end %>
+</div>
