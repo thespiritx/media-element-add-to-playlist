@@ -16,17 +16,17 @@ Unless required by applicable law or agreed to in writing, software distributed
 <div class="panel-group" id="add_to_playlist" style="display:none" >
   <h4>Add to playlist...</h4>
   <%= form_tag do %>
-    <%= label_tag(:playlist_item_name, "Name") %>
+    <%= label_tag(:name_label, "Name") %>
     <%= text_field_tag(:playlist_item_name) %>
-    <%= label_tag(:selected_playlist, "Playlist") %>
+    <%= label_tag(:playlist_label, "Playlist") %>
     <%= collection_select(:post, :playlist_id, Playlist.where(user: current_user), :id, :title) %>
     </br>
-    <%= label_tag(:playlist_item_start, "Start") %>
+    <%= label_tag(:start_label, "Start") %>
     <%= text_field_tag(:playlist_item_start) %>
-    <%= label_tag(:playlist_item_end, "End") %>
+    <%= label_tag(:end_label, "End") %>
     <%= text_field_tag(:playlist_item_end) %>
     </br>
-    <%= label_tag(:playlist_item_description, "Description") %>
+    <%= label_tag(:description_label, "Description") %>
     <%= text_field_tag(:playlist_item_description) %>
     <%= button_tag("Add", type:"button", class:"add_playlist_item_submit") %>
   <% end %>

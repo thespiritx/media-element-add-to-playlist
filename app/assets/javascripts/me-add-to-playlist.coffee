@@ -19,6 +19,18 @@
         $('#playlist_item_end').val(mejs.Utility.secondsToTimeCode(player.media.duration, true))
 
       $('.add_playlist_item_submit').click (event) ->
-        alert("haha!")
+        p = $('#post_playlist_id').val()
+        $.ajax
+          url: '/playlists/'+p
+          type: 'PUT'
+          data:
+            playlist: p
+            master_file_pid: avalonPlayer.active_segment
+            title: $('#playlist_item_name').val()
+            comment: $('#playlist_item_description').val()
+            start_time: $('#playlist_item_start').val()
+            end_time: $('#playlist_item_end').val()
+          complete: (response) ->
+            $('#add_to_playlist').hide(500) 
 
 )(mejs.$)
