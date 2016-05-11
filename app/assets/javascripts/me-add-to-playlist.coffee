@@ -14,8 +14,11 @@
       button.appendTo(controls)
 
       button.click (event) ->
-        $offset = player.getCurrentTime()
-        alert $offset
-        $('#add_to_playlist').show()
+        $('#add_to_playlist').show(500)
+        $('#playlist_item_start').val(mejs.Utility.secondsToTimeCode(player.getCurrentTime(), true))
+        $('#playlist_item_end').val(mejs.Utility.secondsToTimeCode(player.media.duration, true))
+
+      $('.add_playlist_item_submit').click (event) ->
+        alert("haha!")
 
 )(mejs.$)
