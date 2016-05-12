@@ -31,6 +31,9 @@
             start_time: $('#playlist_item_start').val()
             end_time: $('#playlist_item_end').val()
           complete: (response) ->
-            $('#add_to_playlist').hide(500) 
+            $('#add_to_playlist').hide(500)
+
+      $('.add_playlist_item_cancel').click (event) ->
+        $('#add_to_playlist').hide(500) 
 
 )(mejs.$)
