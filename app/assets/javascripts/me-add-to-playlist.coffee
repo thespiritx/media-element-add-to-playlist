@@ -21,16 +21,17 @@
       $('.add_playlist_item_submit').click (event) ->
         p = $('#post_playlist_id').val()
         $.ajax
-          url: '/playlists/'+p
-          type: 'PUT'
+          url: '/playlists/'+p+'/items'
+          type: 'POST'
           data:
-            playlist: p
-            master_file_pid: avalonPlayer.active_segment
-            title: $('#playlist_item_name').val()
-            comment: $('#playlist_item_description').val()
-            start_time: $('#playlist_item_start').val()
-            end_time: $('#playlist_item_end').val()
+            playlist_item:
+              master_file_id: avalonPlayer.active_segment
+              title: $('#playlist_item_name').val()
+              comment: $('#playlist_item_description').val()
+              start_time: $('#playlist_item_start').val()
+              end_time: $('#playlist_item_end').val()
           complete: (response) ->
+            $('#add_to_playlist_success').show(300)
             $('#add_to_playlist').hide(500)
 
       $('.add_playlist_item_cancel').click (event) ->
