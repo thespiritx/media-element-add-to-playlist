@@ -14,7 +14,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 ---  END LICENSE_HEADER BLOCK  ---
 %>
 <div id="add_to_playlist" style="display:none" >
-  <h4>Add to playlist...</h4>
+  <h3>Add to playlist...</h3>
   <%= form_tag do %>
     <table>
       <tr>
@@ -31,7 +31,7 @@ Unless required by applicable law or agreed to in writing, software distributed
       </tr>
       <tr>
         <td><%= label_tag(:description_label, "Description") %></td>
-        <td colspan="3"><%= text_field_tag(:playlist_item_description) %></td>
+        <td colspan="3"><%= text_area_tag(:playlist_item_description) %></td>
       </tr>
       <tr>
         <td colspan="4">
