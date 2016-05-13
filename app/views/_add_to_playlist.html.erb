@@ -13,11 +13,7 @@ Unless required by applicable law or agreed to in writing, software distributed
   specific language governing permissions and limitations under the License.
 ---  END LICENSE_HEADER BLOCK  ---
 %>
-<div class="panel-group" id="add_to_playlist_success" >
-  <%= flash[:success] %>
-</div>
-
-<div class="panel-group" id="add_to_playlist" style="display:none" >
+<div id="add_to_playlist" style="display:none" >
   <h4>Add to playlist...</h4>
   <%= form_tag do %>
     <table>
