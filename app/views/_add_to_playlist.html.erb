@@ -18,20 +18,20 @@ Unless required by applicable law or agreed to in writing, software distributed
   <%= form_tag do %>
     <table>
       <tr>
-        <td><%= label_tag(:name_label, "Name") %>
-        <td><%= text_field_tag(:playlist_item_name) %>
+        <td><%= label_tag(:title_label, "Title") %>
+        <td><%= text_field_tag(:playlist_item_title, nil, class:"form-control form-model") %>
         <td><%= label_tag(:playlist_label, "Playlist") %>
-        <td><%= collection_select(:post, :playlist_id, Playlist.where(user: current_user), :id, :title) %>
+        <td><%= collection_select(:post, :playlist_id, Playlist.where(user: current_user), :id, :title, {}, {class: "form-control form-model"}) %>
       </tr>
       <tr>
         <td><%= label_tag(:start_label, "Start") %>
-        <td><%= text_field_tag(:playlist_item_start) %>
+        <td><%= text_field_tag(:playlist_item_start, nil, class:"form-control form-model") %>
         <td><%= label_tag(:end_label, "End") %>
-        <td><%= text_field_tag(:playlist_item_end) %>
+        <td><%= text_field_tag(:playlist_item_end, nil, class:"form-control form-model") %>
       </tr>
       <tr>
         <td><%= label_tag(:description_label, "Description") %></td>
-        <td colspan="3"><%= text_area_tag(:playlist_item_description) %></td>
+        <td colspan="3"><%= text_area_tag(:playlist_item_description, nil, class:"form-control form-model") %></td>
       </tr>
       <tr>
         <td colspan="4">

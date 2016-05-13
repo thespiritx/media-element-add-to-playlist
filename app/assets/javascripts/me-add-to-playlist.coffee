@@ -26,7 +26,7 @@
           data:
             playlist_item:
               master_file_id: avalonPlayer.active_segment
-              title: $('#playlist_item_name').val()
+              title: $('#playlist_item_title').val()
               comment: $('#playlist_item_description').val()
               start_time: $('#playlist_item_start').val()
               end_time: $('#playlist_item_end').val()
