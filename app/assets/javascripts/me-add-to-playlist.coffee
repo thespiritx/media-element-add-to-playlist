@@ -2,6 +2,7 @@
 
   $.extend mejs.MepDefaults,
     addToPlaylistEnabled: false
+    playlistItemDefaultTitle: null
 
   $.extend MediaElementPlayer::,
     buildaddToPlaylist: (player, controls, layers, media) ->
@@ -41,6 +42,6 @@
         $('#add_to_playlist').hide(500)
 
       $('.add_to_playlist_alert_close').click (event) ->
-        $('#add_to_playlist_alert').hide(500) 
+        $('#add_to_playlist_alert').hide(500)
 
 )(mejs.$)
