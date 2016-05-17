@@ -13,7 +13,15 @@ Unless required by applicable law or agreed to in writing, software distributed
   specific language governing permissions and limitations under the License.
 ---  END LICENSE_HEADER BLOCK  ---
 %>
-<div id="add_to_playlist" style="display:none" >
+<div id="add_to_playlist_alert" class="add_to_playlist add_to_playlist_alert" style="display:none">
+  <table>
+    <tr>
+      <td style="width:100%">Playlist item added. Click here to view your playlist: <a id="playlist_link" href="">Playlist</a>
+      <td><%= link_to "X", "", class: "btn btn-default" %>
+    </tr>
+  </table>
+</div>
+<div id="add_to_playlist" class="add_to_playlist" style="display:none" >
   <h3>Add to playlist:</h3>
   <%= form_tag do %>
     <table>
