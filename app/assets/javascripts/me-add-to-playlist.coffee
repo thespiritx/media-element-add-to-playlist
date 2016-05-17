@@ -35,12 +35,12 @@
               start_time: $('#playlist_item_start').val()
               end_time: $('#playlist_item_end').val()
           success: (response) ->
-            $('#add_to_playlist_alert')[0].className = 'alert alert-success';
+            $('#add_to_playlist_alert')[0].className = 'alert alert-success'
             $('#add_to_playlist_result_message')[0].value = response[:message]
             $('#add_to_playlist_alert').show(300)
             $('#add_to_playlist').hide(500)
-          error: (reponse) ->
-            $('#add_to_playlist_alert')[0].className = 'alert alert-danger';
+          error: (response) ->
+            $('#add_to_playlist_alert')[0].className = 'alert alert-danger'
             $('#add_to_playlist_result_message')[0].value = response[:message]
             $('#add_to_playlist_alert').show(300)
 
