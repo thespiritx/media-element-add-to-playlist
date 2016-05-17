@@ -34,13 +34,17 @@
               comment: $('#playlist_item_description').val()
               start_time: $('#playlist_item_start').val()
               end_time: $('#playlist_item_end').val()
-          complete: (response) ->
-            $('#playlist_link').attr("href", "/playlists/"+p)
+          success: (response) ->
+            $('#result_message')[0].value = response[:message]
             $('#add_to_playlist_alert').show(300)
             $('#add_to_playlist').hide(500)
+          error: (reponse) ->
+            $('#result_message')[0].value = response[:message]
+            $('#add_to_playlist_alert').show(300)
 
       $('.add_playlist_item_cancel').click (event) ->
         $('#add_to_playlist').hide(500)
+        $('#add_to_playlist_alert').hide(300)
 
       $('.add_to_playlist_alert_close').click (event) ->
         $('#add_to_playlist_alert').hide(500)
