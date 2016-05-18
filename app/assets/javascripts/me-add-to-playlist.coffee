@@ -20,7 +20,7 @@
         $('#add_to_playlist').show(500)
         $('#playlist_item_start').val(mejs.Utility.secondsToTimeCode(player.getCurrentTime(), true))
         $('#playlist_item_end').val(mejs.Utility.secondsToTimeCode(player.media.duration, true))
-
+        $('#add_to_playlist_alert').hide(500)
 
       $('.add_playlist_item_submit').click (event) ->
         p = $('#post_playlist_id').val()
@@ -35,12 +35,12 @@
               start_time: $('#playlist_item_start').val()
               end_time: $('#playlist_item_end').val()
           success: (response) ->
-            $('#add_to_playlist_alert')[0].className = 'alert alert-success'
+            $('#add_to_playlist_alert')[0].className = 'alert alert-success add_to_playlist_alert'
             $('#add_to_playlist_result_message')[0].innerHTML = response.message
             $('#add_to_playlist_alert').show(300)
             $('#add_to_playlist').hide(500)
           error: (response) ->
-            $('#add_to_playlist_alert')[0].className = 'alert alert-danger'
+            $('#add_to_playlist_alert')[0].className = 'alert alert-danger add_to_playlist_alert add_to_playlist_alert_error'
             $('#add_to_playlist_result_message')[0].innerHTML = response.responseJSON.message
             $('#add_to_playlist_alert').show(300)
 
