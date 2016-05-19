@@ -49,7 +49,7 @@
         $('#add_to_playlist').hide(500)
         $('#add_to_playlist_alert').hide(300)
 
-      $('.reveal_create_playlist').cick (event) ->
+      $('#reveal_create_playlist').cick (event) ->
         $('#create_new_playlist_cell').show(300)
 
       $('#cancel_create_playlist').click (event) ->
