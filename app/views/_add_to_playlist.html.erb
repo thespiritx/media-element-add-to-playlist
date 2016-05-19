@@ -26,12 +26,12 @@ Unless required by applicable law or agreed to in writing, software distributed
         <td><%= text_field_tag(:playlist_item_title, nil, class:"form-control form-model") %>
         <td><%= label_tag(:playlist_label, "Playlist") %>
         <td><%= collection_select(:post, :playlist_id, Playlist.where(user: current_user), :id, :title, {}, {class: "form-control form-model"}) %>
-        <td><span id='reveal_create_playlist'><span class="fa fa-plus-square" title='New Playlast'></span></span></td>
+        <td><span id='reveal_create_playlist'><i class="fa fa-plus-square fa-2x" title='New Playlist'></i></span></td>
       </tr>
       <tr id='create_new_playlist_cell' style="display:none">
         <td><%= label_tag(:new_playlist_label, "New Playlist Name") %>
         <td><%= text_field_tag(:new_playlist_name, nil, class:"form-control form-model") %>
-        <td><span id='cancel_create_playlist'><span class='fa fa-undo' title='Cancel Playlist Creatiuon'></span></span></td>
+        <td><span id='cancel_create_playlist'><i class='fa fa-undo fa-2x' title='Cancel Playlist Creatiuon'></i>Create Playlist</span></td>
       </tr>
       <tr>
         <td><%= label_tag(:start_label, "Start") %>
