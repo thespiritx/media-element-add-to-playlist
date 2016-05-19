@@ -15,7 +15,7 @@
       button.appendTo(controls)
 
       button.click (event) ->
-        unless $('#add_playlist_item_playlists_not_empty')[0].innerHTML == 'true'
+        if $('#add_playlist_item_playlists_not_empty')[0].innerHTML == 'false'
           $('#playlist_item_description')[0].value = ''
           $('#playlist_item_title').val(player.options.playlistItemDefaultTitle)
           $('#add_to_playlist').show(500)
