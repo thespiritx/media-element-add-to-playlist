@@ -48,4 +48,7 @@ Unless required by applicable law or agreed to in writing, software distributed
       </table>
     <% end %>
   <% end %>
+  <% if playlists.empty? %>
+    <span class='add_playlist_item_no_playlists'>You have no playlists, you must first <%= link_to('create a playlist.', new_playist)%></span>
+  <% end %>
 </div>
