@@ -23,12 +23,13 @@
         $('#add_to_playlist_alert').hide(500)
 
       $('.add_playlist_item_submit').click (event) ->
-        p = $('#post_playlist_id').val()
         $.ajax
-          url: '/playlists/'+p+'/items'
+          url: '/playlists/items'
           type: 'POST'
           data:
             playlist_item:
+              playlist_name: $('#new_playlist_name').val()
+              playlist_id: $('#post_playlist_id').val()
               master_file_id: avalonPlayer.active_segment
               title: $('#playlist_item_title').val()
               comment: $('#playlist_item_description').val()
@@ -47,4 +48,15 @@
       $('.add_playlist_item_cancel').click (event) ->
         $('#add_to_playlist').hide(500)
         $('#add_to_playlist_alert').hide(300)
+
+      $('.reveal_create_playlist').cick (event) ->
+        $('#create_new_playlist_cell').show(300)
+
+      $('cancel_create_playlist').click (event) ->
+        $('#create_new_playlist_cell').hide(500)
+        $('#new_playlist_name').val(null)
+
+      $('post_playlist_id').on "change" ->
+        $('#create_new_playlist_cell').hide(500)
+        $('#new_playlist_name').val(null)            
 )(mejs.$)
