@@ -56,7 +56,4 @@
         $('#create_new_playlist_cell').hide(500)
         $('#new_playlist_name').val(null)
 
-      $('post_playlist_id').on "change" ->
-        $('#create_new_playlist_cell').hide(500)
-        $('#new_playlist_name').val(null)            
 )(mejs.$)
