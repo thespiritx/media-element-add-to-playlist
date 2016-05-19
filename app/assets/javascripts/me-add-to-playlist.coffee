@@ -18,11 +18,10 @@
         if $('#add_playlist_item_playlists_not_empty')[0].innerHTML == 'false'
           $('#playlist_item_description')[0].value = ''
           $('#playlist_item_title').val(player.options.playlistItemDefaultTitle)
-          $('#add_to_playlist').show(500)
           $('#playlist_item_start').val(mejs.Utility.secondsToTimeCode(player.getCurrentTime(), true))
           $('#playlist_item_end').val(mejs.Utility.secondsToTimeCode(player.media.duration, true))
-          $('#add_to_playlist_alert').hide(500)
-
+        $('#add_to_playlist').show(500)
+        $('#add_to_playlist_alert').hide(500)
 
       $('.add_playlist_item_submit').click (event) ->
         p = $('#post_playlist_id').val()
