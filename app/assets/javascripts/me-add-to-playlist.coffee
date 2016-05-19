@@ -52,7 +52,7 @@
       $('.reveal_create_playlist').cick (event) ->
         $('#create_new_playlist_cell').show(300)
 
-      $('cancel_create_playlist').click (event) ->
+      $('#cancel_create_playlist').click (event) ->
         $('#create_new_playlist_cell').hide(500)
         $('#new_playlist_name').val(null)
 
