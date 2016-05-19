@@ -50,6 +50,6 @@ Unless required by applicable law or agreed to in writing, software distributed
     <% end %>
   <% end %>
   <% if @add_playlist_item_playlists.empty? %>
-    <span class='add_playlist_item_playlists_no_playlists_message'>You have no playlists, <%= link_to('create a playlist.', new_playlist) %></span>
+    <span class='add_playlist_item_playlists_no_playlists_message'>You have no playlists, <%= link_to('create a playlist.', new_playlist_path) %></span>
   <% end %>
 </div>
