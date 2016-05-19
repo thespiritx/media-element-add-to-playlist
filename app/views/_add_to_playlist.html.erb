@@ -20,6 +20,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 <div id="add_to_playlist" class="add_to_playlist" style="display:none" >
   <h3>Add to playlist:</h3>
   <% @add_playlist_item_playlists = Playlist.where(user: current_user) %>
+  <span style="display:none" id='add_playlist_item_playlists_not_empty'><%= @add_playlist_item_playlists.empty? %>
   <% unless @add_playlist_item_playlists.empty? %>
     <%= form_tag do %>
       <table>
