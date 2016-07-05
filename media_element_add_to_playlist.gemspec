@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Leah Lee"]
   s.email       = ["lmb@iu.edu"]
   s.homepage    = "https://github.com/avalonmediasystem/media-element-add-to-playlist"
-  s.summary     = "Add the current time or segment to a playlist."
-  s.description = "Add the current time or segment to a playlist."
+  s.summary     = "Add the current time or segment to a playlist.  Also, add marker to playlist item."
+  s.description = "Add the current time or segment to a playlist.  Also, add marker to playlist item."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

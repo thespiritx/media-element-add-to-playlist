@@ -1,11 +1,18 @@
-.mejs-controls .mejs-add-to-playlist button {
-  background: transparent url(<%= image_path 'add_to_playlist_icon.svg' %>) no-repeat;
+.mejs-controls .mejs-add-to-playlist button, .mejs-controls .mejs-add-marker-to-playlist-item button {
   background-size: 23pt !important;
-  background-position: 50%;
+  background-position: 50% !important;
   padding: 1pt;
 }
 
-.add_to_playlist_alert {
+.mejs-controls .mejs-add-to-playlist button {
+  background: transparent url(<%= image_path 'add_to_playlist_icon.svg' %>) no-repeat;
+}
+
+.mejs-controls .mejs-add-marker-to-playlist-item button {
+  background: transparent url(<%= image_path 'add_bookmark.svg' %>) no-repeat;
+}
+
+.add_to_playlist_alert, .add_marker_to_playlist_item_alert {
   a {
     font-weight: bold;
     text-decoration: underline;
@@ -16,13 +23,13 @@
   border-top-left-radius: 0pt;   
 }
 
-.add_to_playlist_alert_error {
+.add_to_playlist_alert_error, .add_marker_to_playlist_item_alert_error {
   border-bottom-right-radius: 0pt;
   border-bottom-left-radius: 0pt;
   margin-bottom: 0pt;
 }
 
-.add_to_playlist_alert_close {
+.add_to_playlist_alert_close, .add_marker_to_playlist_item_alert_close {
   float: right;
   font-size: 21px;
   font-weight: bold;
@@ -31,7 +38,7 @@
   opacity: 0.2;
 }
 
-.add_to_playlist {
+.add_to_playlist, .add_marker_to_playlist_item {
   max-width: 870px;
   background: #696667;
   color: white;
