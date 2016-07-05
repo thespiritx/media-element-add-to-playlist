@@ -71,9 +71,9 @@
           url: '/avalon_marker'
           type: 'POST'
           data:
-            avalon_marker:
-              master_file: avalonPlayer.stream_info.id
-              playlist_item: avalonPlayer.player.domNode.dataset['currentPlaylistItem'] || null
+            marker:
+              master_file_id: avalonPlayer.stream_info.id
+              playlist_item_id: avalonPlayer.player.domNode.dataset['currentPlaylistItem'] || null
               title: $('#marker_title').val()
               start_time: $('#marker_start').val()
           success: (response) ->
