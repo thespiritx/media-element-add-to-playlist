@@ -81,6 +81,25 @@
             $('#add_marker_to_playlist_item_result_message')[0].innerHTML = response.message
             $('#add_marker_to_playlist_item_alert').show(300)
             $('#add_marker_to_playlist_item').hide(500)
+            if $('#markers').length == 0
+              new_marker_section = $("<div class='panel-heading' role='tab' id='markers_heading'>
+                <h5 class='panel-title '>
+                  <a href='#markers_section' class='accordion-toggle collapsed pull-left' data-toggle='collapse'>
+                    Markers</a>
+                </h5>
+              </div>
+              <div id='markers_section' class='panel-collapse collapse' role='tabpanel'>
+                <div class='panel-body'>
+                  <div id='markers' class='container'>
+                    <div class='row marker_header'>
+                      <div class='col-xs-8'>Name</div>
+                      <div class='col-xs-2 col-md-1'>Time</div>
+                      <div class='col-xs-2 col-md-3'>Actions</div>
+                    </div>
+                  </div>
+                </div>
+              </div>")
+              $('#heading0').after(new_marker_section)
             new_marker = $("<div class='row marker' id='marker_row_"+response.id+"'>
                 <form accept-charset='UTF-8' action='/avalon_marker/"+response.id+"' class='edit_avalon_marker' data-remote='true' id='edit_avalon_marker_"+response.id+"' method='post'>
                   <div style='margin:0;padding:0;display:inline'>
@@ -88,7 +107,7 @@
                     <input name='_method' type='hidden' value='patch' />
                   </div>
                   <div class='col-xs-8'>
-                    <a class='marker_title' data-offset='2.0'>"+response.marker.title+"</a>
+                    <a class='marker_title' data-offset='"+mejs.Utility.secondsToTimeCode(response.marker.start_time/1000)+"'>"+response.marker.title+"</a>
                   </div>
                   <div class='col-xs-2 col-md-1'>
                     <span class='marker_start_time'>"+mejs.Utility.secondsToTimeCode(response.marker.start_time/1000)+"</span>
@@ -103,6 +122,10 @@
             new_marker.find('button.edit_marker').click(enableMarkerEditForm);
             new_marker.find('.edit_avalon_marker').on('ajax:success', handle_edit_save).on 'ajax:error', (e, xhr, status, error) ->
               alert 'Request failed.'
+              return
+            new_marker.find('.marker_title').click ->
+              if typeof currentPlayer != typeof undefined
+                currentPlayer.setCurrentTime parseFloat(@dataset['offset']) or 0
               return
             new_marker.find('button[name="delete_marker"]').popover(
               trigger: 'manual'
