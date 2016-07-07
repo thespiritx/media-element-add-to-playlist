@@ -107,7 +107,7 @@
                     <input name='_method' type='hidden' value='patch' />
                   </div>
                   <div class='col-xs-8'>
-                    <a class='marker_title' data-offset='2.0'>"+response.marker.title+"</a>
+                    <a class='marker_title' data-offset='"+mejs.Utility.secondsToTimeCode(response.marker.start_time/1000)+"'>"+response.marker.title+"</a>
                   </div>
                   <div class='col-xs-2 col-md-1'>
                     <span class='marker_start_time'>"+mejs.Utility.secondsToTimeCode(response.marker.start_time/1000)+"</span>
@@ -122,6 +122,10 @@
             new_marker.find('button.edit_marker').click(enableMarkerEditForm);
             new_marker.find('.edit_avalon_marker').on('ajax:success', handle_edit_save).on 'ajax:error', (e, xhr, status, error) ->
               alert 'Request failed.'
+              return
+            new_marker.find('.marker_title').click ->
+              if typeof currentPlayer != typeof undefined
+                currentPlayer.setCurrentTime parseFloat(@dataset['offset']) or 0
               return
             new_marker.find('button[name="delete_marker"]').popover(
               trigger: 'manual'
