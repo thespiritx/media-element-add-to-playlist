@@ -107,7 +107,7 @@
                     <input name='_method' type='hidden' value='patch' />
                   </div>
                   <div class='col-xs-8'>
-                    <a class='marker_title' data-offset='"+mejs.Utility.secondsToTimeCode(response.marker.start_time/1000)+"'>"+response.marker.title+"</a>
+                    <a class='marker_title' data-offset='"+(response.marker.start_time/1000)+"'>"+response.marker.title+"</a>
                   </div>
                   <div class='col-xs-2 col-md-1'>
                     <span class='marker_start_time'>"+mejs.Utility.secondsToTimeCode(response.marker.start_time/1000)+"</span>
