@@ -100,17 +100,18 @@
                 </div>
               </div>")
               $('#heading0').after(new_marker_section)
-            new_marker = $("<div class='row marker' id='marker_row_"+response.id+"'>
+            offset = response.marker.start_time/1000
+            new_marker = $("<div class='row marker' id='marker_row_"+response.id+"' data-offset='"+offset+"'>
                 <form accept-charset='UTF-8' action='/avalon_marker/"+response.id+"' class='edit_avalon_marker' data-remote='true' id='edit_avalon_marker_"+response.id+"' method='post'>
                   <div style='margin:0;padding:0;display:inline'>
                     <input name='utf8' type='hidden' value='&#x2713;' />
                     <input name='_method' type='hidden' value='patch' />
                   </div>
                   <div class='col-xs-8'>
-                    <a class='marker_title' data-offset='"+(response.marker.start_time/1000)+"'>"+response.marker.title+"</a>
+                    <a class='marker_title' data-offset='"+offset+"'>"+response.marker.title+"</a>
                   </div>
                   <div class='col-xs-2 col-md-1'>
-                    <span class='marker_start_time'>"+mejs.Utility.secondsToTimeCode(response.marker.start_time/1000)+"</span>
+                    <span class='marker_start_time'>"+mejs.Utility.secondsToTimeCode(offset)+"</span>
                   </div>
                   <div class='col-xs-2 col-md-3'>
                     <button class='btn btn-default btn-xs edit_marker fa fa-edit' id='edit_marker_"+response.id+"' name='edit_marker' type='button'>Edit</button>
@@ -118,7 +119,13 @@
                   </div>
                 </form>
               </div>");
-            $('#markers').append(new_marker)
+            later_markers = $('.row.marker[data-offset]').filter(->
+              $(this).attr('data-offset') > offset
+            )
+            if later_markers.length
+              later_markers.first().before(new_marker)
+            else
+              $('#markers').append(new_marker)
             new_marker.find('button.edit_marker').click(enableMarkerEditForm);
             new_marker.find('.edit_avalon_marker').on('ajax:success', handle_edit_save).on 'ajax:error', (e, xhr, status, error) ->
               alert 'Request failed.'
