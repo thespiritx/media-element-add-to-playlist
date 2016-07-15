@@ -96,9 +96,9 @@
                 <div class='panel-body'>
                   <div id='markers' class='container'>
                     <div class='row marker_header'>
-                      <div class='col-xs-8'>Name</div>
+                      <div class='col-xs-7 sol-md-8'>Name</div>
                       <div class='col-xs-2 col-md-1'>Time</div>
-                      <div class='col-xs-2 col-md-3'>Actions</div>
+                      <div class='col-xs-3 col-md-3 text-right'>Actions</div>
                     </div>
                   </div>
                 </div>
@@ -111,15 +111,19 @@
                     <input name='utf8' type='hidden' value='&#x2713;' />
                     <input name='_method' type='hidden' value='patch' />
                   </div>
-                  <div class='col-xs-8'>
+                  <div class='col-xs-7 col-md-8'>
                     <a class='marker_title' data-offset='"+offset+"'>"+response.marker.title+"</a>
                   </div>
                   <div class='col-xs-2 col-md-1'>
                     <span class='marker_start_time'>"+mejs.Utility.secondsToTimeCode(offset)+"</span>
                   </div>
-                  <div class='col-xs-2 col-md-3'>
-                    <button class='btn btn-default btn-xs edit_marker fa fa-edit' id='edit_marker_"+response.id+"' name='edit_marker' type='button'>Edit</button>
-                    <button class='btn btn-danger btn-xs btn-confirmation fa fa-times' data-placement='top' form='edit_avalon_marker_"+response.id+"' name='delete_marker' type='submit'>Delete</button>
+                  <div class='col-xs-3 col-md-3 text-right'>
+                    <button class='btn btn-default btn-xs edit_marker' id='edit_marker_"+response.id+"' name='edit_marker' type='button'>
+                      <i class='fa fa-edit' title='Edit'></i> <span class='sm-hidden'>Edit</span>
+                    </button>
+                    <button class='btn btn-danger btn-xs btn-confirmation' data-placement='top' form='edit_avalon_marker_"+response.id+"' name='delete_marker' type='submit'>
+                      <i class='fa fa-times' title='Delete'></i> <span class='sm-hidden'>Delete</span>
+                    </button>
                   </div>
                 </form>
               </div>");
@@ -130,6 +134,8 @@
               later_markers.first().before(new_marker)
             else
               $('#markers').append(new_marker)
+            offset_percent = Math.round(if isNaN(parseFloat(offset)) then 0 else (100*offset / currentPlayer.media.duration))
+            $('.mejs-time-total').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset_percent+'%" title="'+response.marker.title+'"></span>')
             new_marker.find('button.edit_marker').click(enableMarkerEditForm);
             new_marker.find('.edit_avalon_marker').on('ajax:success', handle_edit_save).on 'ajax:error', (e, xhr, status, error) ->
               alert 'Request failed.'
