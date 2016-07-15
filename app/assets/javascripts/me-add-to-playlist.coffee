@@ -105,7 +105,7 @@
               </div>")
               $('#heading0').after(new_marker_section)
             offset = response.marker.start_time/1000
-            new_marker = $("<div class='row marker' id='marker_row_"+response.id+"' data-offset='"+offset+"'>
+            new_marker = $("<div class='row marker' id='marker_row_"+response.id+"' data-offset='"+offset+"' data-marker='"+response.id+"'>
                 <form accept-charset='UTF-8' action='/avalon_marker/"+response.id+"' class='edit_avalon_marker' data-remote='true' id='edit_avalon_marker_"+response.id+"' method='post'>
                   <div style='margin:0;padding:0;display:inline'>
                     <input name='utf8' type='hidden' value='&#x2713;' />
@@ -135,7 +135,7 @@
             else
               $('#markers').append(new_marker)
             offset_percent = Math.round(if isNaN(parseFloat(offset)) then 0 else (100*offset / currentPlayer.media.duration))
-            $('.mejs-time-total').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset_percent+'%" title="'+response.marker.title+'"></span>')
+            $('.mejs-time-total').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset_percent+'%" title="'+response.marker.title+'" data-marker='+response.id+'></span>')
             new_marker.find('button.edit_marker').click(enableMarkerEditForm);
             new_marker.find('.edit_avalon_marker').on('ajax:success', handle_edit_save).on 'ajax:error', (e, xhr, status, error) ->
               alert 'Request failed.'
