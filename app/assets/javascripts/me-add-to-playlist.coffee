@@ -96,7 +96,7 @@
                 <div class='panel-body'>
                   <div id='markers' class='container'>
                     <div class='row marker_header'>
-                      <div class='col-xs-7 sol-md-8'>Name</div>
+                      <div class='col-xs-7 col-md-8'>Name</div>
                       <div class='col-xs-2 col-md-1'>Time</div>
                       <div class='col-xs-3 col-md-3 text-right'>Actions</div>
                     </div>
