@@ -21,8 +21,8 @@
           $('#playlist_item_description')[0].value = ''
           $('#playlist_item_title').val(player.options.playlistItemDefaultTitle)
           $('#playlist_item_start').val(mejs.Utility.secondsToTimeCode(player.getCurrentTime(), true))
-          if $('a.current-stream').length
-            end_time = $('a.current-stream')[0].dataset['fragmentend']
+          if $('a.current-stream').length && typeof($('a.current-stream')[0].dataset.fragmentend) != typeof(undefined)
+            end_time = $('a.current-stream')[0].dataset.fragmentend
           else
             end_time = player.media.duration
           $('#playlist_item_end').val(mejs.Utility.secondsToTimeCode(end_time, true))
