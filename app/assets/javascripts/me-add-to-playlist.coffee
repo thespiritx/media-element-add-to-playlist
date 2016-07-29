@@ -105,6 +105,7 @@
               </div>")
               $('#heading0').after(new_marker_section)
             offset = response.marker.start_time/1000
+            offset_str = mejs.Utility.secondsToTimeCode(offset)
             new_marker = $("<div class='row marker' id='marker_row_"+response.id+"' data-offset='"+offset+"' data-marker='"+response.id+"'>
                 <form accept-charset='UTF-8' action='/avalon_marker/"+response.id+"' class='edit_avalon_marker' data-remote='true' id='edit_avalon_marker_"+response.id+"' method='post'>
                   <div style='margin:0;padding:0;display:inline'>
@@ -115,7 +116,7 @@
                     <a class='marker_title' data-offset='"+offset+"'>"+response.marker.title+"</a>
                   </div>
                   <div class='col-xs-2 col-md-1'>
-                    <span class='marker_start_time'>"+mejs.Utility.secondsToTimeCode(offset)+"</span>
+                    <span class='marker_start_time'>"+offset_str+"</span>
                   </div>
                   <div class='col-xs-3 col-md-3 text-right'>
                     <button class='btn btn-default btn-xs edit_marker' id='edit_marker_"+response.id+"' name='edit_marker' type='button'>
@@ -135,7 +136,8 @@
             else
               $('#markers').append(new_marker)
             offset_percent = Math.round(if isNaN(parseFloat(offset)) then 0 else (100*offset / currentPlayer.media.duration))
-            $('.mejs-time-rail').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset_percent+'%" title="'+response.marker.title+'" data-marker='+response.id+'></span>')
+            marker_title = String(response.marker.title).replace(/"/g, '&quot;')+' ['+offset_str+']'
+            $('.mejs-time-rail').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset_percent+'%" title="'+marker_title+'" data-marker='+response.id+'></span>')
             new_marker.find('button.edit_marker').click(enableMarkerEditForm);
             new_marker.find('.edit_avalon_marker').on('ajax:success', handle_edit_save).on 'ajax:error', (e, xhr, status, error) ->
               alert 'Request failed.'
