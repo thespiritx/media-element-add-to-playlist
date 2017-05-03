@@ -105,6 +105,7 @@
               </div>")
               $('#heading0').after(new_marker_section)
             offset = response.marker.start_time/1000
+            offset_str = mejs.Utility.secondsToTimeCode(offset)
             new_marker = $("<div class='row marker' id='marker_row_"+response.id+"' data-offset='"+offset+"' data-marker='"+response.id+"'>
                 <form accept-charset='UTF-8' action='/avalon_marker/"+response.id+"' class='edit_avalon_marker' data-remote='true' id='edit_avalon_marker_"+response.id+"' method='post'>
                   <div style='margin:0;padding:0;display:inline'>
@@ -115,7 +116,7 @@
                     <a class='marker_title' data-offset='"+offset+"'>"+response.marker.title+"</a>
                   </div>
                   <div class='col-xs-2 col-md-1'>
-                    <span class='marker_start_time'>"+mejs.Utility.secondsToTimeCode(offset)+"</span>
+                    <span class='marker_start_time'>"+offset_str+"</span>
                   </div>
                   <div class='col-xs-3 col-md-3 text-right'>
                     <button class='btn btn-default btn-xs edit_marker' id='edit_marker_"+response.id+"' name='edit_marker' type='button'>
