@@ -135,9 +135,9 @@
               later_markers.first().before(new_marker)
             else
               $('#markers').append(new_marker)
-            offset_percent = Math.round(if isNaN(parseFloat(offset)) then 0 else (100*offset / currentPlayer.media.duration))
-            marker_title = String(response.marker.title).replace(/"/g, '&quot;')+' ['+offset_str+']'
-            $('.mejs-time-rail').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset_percent+'%" title="'+marker_title+'" data-marker='+response.id+'></span>')
+            offset_percent = if isNaN(parseFloat(offset)) then 0 else Math.min(1, offset / currentPlayer.media.duration)
+            offset = Math.round($('.mejs-time-total').width() * offset_percent)+'px'
+            $('.mejs-time-rail').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset+'" title="'+response.marker.title+'" data-marker='+response.id+'></span>')
             new_marker.find('button.edit_marker').click(enableMarkerEditForm);
             new_marker.find('.edit_avalon_marker').on('ajax:success', handle_edit_save).on 'ajax:error', (e, xhr, status, error) ->
               alert 'Request failed.'
