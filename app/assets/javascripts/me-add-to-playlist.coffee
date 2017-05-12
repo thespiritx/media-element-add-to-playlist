@@ -11,7 +11,7 @@
 
       return unless player.options.addToPlaylistEnabled
 
-      button = $("<div class='mejs-button mejs-add-to-playlist'>
+      button = $("<div class='mejs__button mejs__add-to-playlist'>
                     <button type='button' aria-controls='mep_0' title='Add to playlist' aria-label='Add to Playlist'/>
                   </div>")
       button.appendTo(controls)
@@ -59,7 +59,7 @@
 
       return unless player.options.addMarkerToPlaylistItemEnabled
 
-      button = $("<div class='mejs-button mejs-add-marker-to-playlist-item'>
+      button = $("<div class='mejs__button mejs__add-marker-to-playlist-item'>
                     <button type='button' aria-controls='mep_0' title='Add Marker' aria-label='Add Marker to Playlist Item'/>
                   </div>")
       button.appendTo(controls)
@@ -136,9 +136,9 @@
             else
               $('#markers').append(new_marker)
             offset_percent = if isNaN(parseFloat(offset)) then 0 else Math.min(1, offset / currentPlayer.media.duration)
-            offset = Math.round($('.mejs-time-total').width() * offset_percent)+'px'
+            offset = Math.round($('.mejs__time-total').width() * offset_percent)+'px'
             marker_title = String(response.marker.title).replace(/"/g, '&quot;')+' ['+offset_str+']'
-            $('.mejs-time-rail').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset+'" title="'+marker_title+'" data-marker='+response.id+'></span>')
+            $('.mejs__time-rail').append('<span class="fa fa-chevron-up scrubber-marker" style="left: '+offset+'" title="'+marker_title+'" data-marker='+response.id+'></span>')
             new_marker.find('button.edit_marker').click(enableMarkerEditForm);
             new_marker.find('.edit_avalon_marker').on('ajax:success', handle_edit_save).on 'ajax:error', (e, xhr, status, error) ->
               alert 'Request failed.'
