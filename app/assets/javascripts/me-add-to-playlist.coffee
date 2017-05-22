@@ -20,12 +20,12 @@
         if $('#add_playlist_item_playlists_not_empty')[0].innerHTML == 'false'
           $('#playlist_item_description')[0].value = ''
           $('#playlist_item_title').val(player.options.playlistItemDefaultTitle)
-          $('#playlist_item_start').val(mejs.Utility.secondsToTimeCode(player.getCurrentTime(), true))
+          $('#playlist_item_start').val(mejs.Utils.secondsToTimeCode(player.getCurrentTime(), true))
           if $('a.current-stream').length && typeof($('a.current-stream')[0].dataset.fragmentend) != typeof(undefined)
             end_time = $('a.current-stream')[0].dataset.fragmentend
           else
             end_time = player.media.duration
-          $('#playlist_item_end').val(mejs.Utility.secondsToTimeCode(end_time, true))
+          $('#playlist_item_end').val(mejs.Utils.secondsToTimeCode(end_time, true))
         $('#add_to_playlist').show(500)
         $('#add_to_playlist_alert').hide(500)
 
@@ -66,7 +66,7 @@
 
       button.click (event) ->
         $('#marker_title').val(player.options.markerDefaultTitle)
-        $('#marker_start').val(mejs.Utility.secondsToTimeCode(player.getCurrentTime(), true))
+        $('#marker_start').val(mejs.Utils.secondsToTimeCode(player.getCurrentTime(), true))
         $('#add_marker_to_playlist_item').show(500)
         $('#add_marker_to_playlist_item_alert').hide(500)
 
@@ -105,7 +105,7 @@
               </div>")
               $('#heading0').after(new_marker_section)
             offset = response.marker.start_time/1000
-            offset_str = mejs.Utility.secondsToTimeCode(offset)
+            offset_str = mejs.Utils.secondsToTimeCode(offset)
             new_marker = $("<div class='row marker' id='marker_row_"+response.id+"' data-offset='"+offset+"' data-marker='"+response.id+"'>
                 <form accept-charset='UTF-8' action='/avalon_marker/"+response.id+"' class='edit_avalon_marker' data-remote='true' id='edit_avalon_marker_"+response.id+"' method='post'>
                   <div style='margin:0;padding:0;display:inline'>
