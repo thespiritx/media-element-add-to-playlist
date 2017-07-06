@@ -25,7 +25,7 @@
             end_time = $('a.current-stream')[0].dataset.fragmentend
           else
             end_time = player.media.duration
-          $('#playlist_item_end').val(mejs.Utils.secondsToTimeCode(end_time, true))
+          $('#playlist_item_end').val(mejs.Utils.secondsToTimeCode(end_time-1, true))
         $('#add_to_playlist').show(500)
         $('#add_to_playlist_alert').hide(500)
 
